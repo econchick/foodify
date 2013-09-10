@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='en-us'>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>foodify</title>
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/foodify.css') }}"/>
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/jquery/tipTip.css') }}"/>
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,300,200'/>
+</head>
+
+<body>
+    <div class="header" id="header">
+        <div style="float:left;padding:5px;padding-right:10px;padding-left:10px;font-weight:400">
+            <a href="/" style="color:rgb(158, 202, 59);text-decoration:none;font-size:30px">foodify</a>
+            <p style="color:white;padding-right:10px;font-size:20px;">songs to satisfy your cravings</p>
+        </div>
+    </div>
+    {% block search %}{% endblock %}
+    {% block body %}{% endblock %}
+
+<script>
+    $(function(){
+        $(".question").tipTip({maxWidth: "400px", edgeOffset: 2, defaultPosition:"right"});
+    });
+</script>
+</body>
+</html>

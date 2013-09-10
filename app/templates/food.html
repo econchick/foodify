@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+{% block body %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/d3.v3.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/d3.layout.cloud.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery/jquery-1.10.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery/jquery.tipTip.minified.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/foodify.js') }}"></script>
+    <div class="mainContent">
+        <div class="card_container">
+            <div class="card_row">
+                <div class="card_cell">
+                    <div class="card_long">
+                        <div class="card_header">
+                          <img class='question' src="{{ url_for('static', filename='images/info.png') }}" title="To appease your visual appetite: Visualized spotify recipe of song titles based on what food you’re craving." alt="Information on Visualization">
+                            <p>Visualized Recipe</p>
+                            <div id="card_wordcloud">
+                                {% if foods %}
+            					          <script>
+                                  var fill = d3.scale.category20();
+                                  var foods = {{ foods|safe }};
+
+                                  d3.layout.cloud().size([800, 400])
+                                      .words(foods.map(function(d) {
+                                        return {text: d, size: 5 + Math.random() * 90};
+                                      }))
+                                      .padding(5)
+                                      .rotate(function() { return ~~(Math.random() * 2) * 90; })
+                                      .font("Impact")
+                                      .fontSize(function(d) { return d.size; })
+                                      .on("end", draw)
+                                      .start();
+
+                                  function draw(words) {
+                                    d3.select("#card_wordcloud").append("svg")
+                                        .attr("width", 800)
+                                        .attr("height", 400)
+                                      .append("g")
+                                        .attr("transform", "translate(400,200)")
+                                      .selectAll("text")
+                                        .data(words)
+                                      .enter().append("text")
+                                        .style("font-size", function(d) { return d.size + "px"; })
+                                        .style("font-family", "Impact")
+                                        .style("fill", function(d, i) { return fill(i); })
+                                        .attr("text-anchor", "middle")
+                                        .attr("transform", function(d) {
+                                          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                                        })
+                                        .text(function(d) { return d.text; });
+                                      }
+                                </script>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if song_data %}
+                <div class="card_row">
+                  <div class="right">
+                    <div class="card">
+                      <iframe src="https://embed.spotify.com/?uri={{ song_data[0].href }}"></iframe>
+                    </div>
+                  </div>
+                  <div class="left">
+                    <div class="card">
+                      <iframe src="https://embed.spotify.com/?uri={{ song_data[1].href }}"></iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="card_row">
+                  <div class="right">
+                    <div class="card">
+                      <iframe src="https://embed.spotify.com/?uri={{ song_data[2].href }}"></iframe>
+                    </div>
+                  </div>
+                  <div class="left">
+                    <div class="card">
+                      <iframe src="https://embed.spotify.com/?uri={{ song_data[3].href }}"></iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="card_row">
+                  <div class="right">
+                    <div class="card">
+                      <iframe src="https://embed.spotify.com/?uri={{ song_data[4].href }}"></iframe>
+                    </div>
+                  </div>
+                  <div class="left">
+                    <div class="card">
+                      <iframe src="https://embed.spotify.com/?uri={{ song_data[5].href }}"></iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="card_row">
+                  <div class="right">
+                    <div class="card">
+                      <iframe src="https://embed.spotify.com/?uri={{ song_data[6].href }}"></iframe>
+                    </div>
+                  </div>
+                  <div class="left">
+                    <div class="card">
+                      <iframe src="https://embed.spotify.com/?uri={{ song_data[7].href }}"></iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="card_row">
+                  <div class="right">
+                    <div class="card">
+                      <iframe src="https://embed.spotify.com/?uri={{ song_data[8].href }}"></iframe>
+                    </div>
+                  </div>
+                  <div class="left">
+                    <div class="card">
+                      <iframe src="https://embed.spotify.com/?uri={{ song_data[9].href }}"></iframe>
+                    </div>
+                  </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

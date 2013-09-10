@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <div class="error_div" id="error_div">
+        <p id="error_p">AN ERROR! WHOOPS</p>
+
+    </div>
+     <p>{{ error }}</p>
+    <div class="searchbox" id="searchbox">
+      <form action="{{ url_for('foodify') }}" method=get id='foods'>
+        <p id='tw-input-text'>
+          <input type="text" style="width:75%" placeholder="Omnomnomnom" class="resizedbox" name="foods"></input>
+        </p>
+        <p>
+            <button id="clickButton" class="buttonStyle" onClick="">Search</button>
+            <button id="hungryButton" class="buttonStyle" onClick="">I’m feeling hungry</button>
+        </p>
+      </form>
+    </div>
+{% endblock %}
