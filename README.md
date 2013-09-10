@@ -1,6 +1,6 @@
 ## Foodify
 
-Visualize your hunger via Spotify tracks!  Enter
+Visualize your hunger via Spotify tracks!  Enter in a food or two, and see your cravings visualized in a wordcloud of Spotify songs along with Spotify tracks.
 
 Visit [http://foodify-spotify.herokuapp.com](http://foodify-spotify.herokuapp.com) to see it in action!
 
