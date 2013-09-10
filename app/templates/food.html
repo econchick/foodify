@@ -56,67 +56,16 @@
                 </div>
             </div>
             {% if song_data %}
-                <div class="card_row">
-                  <div class="right">
+            <div class="card_row">
+              {% for song in song_data %}
+                  <div class="{{ loop.cycle('right', 'left') }}">
                     <div class="card">
-                      <iframe src="https://embed.spotify.com/?uri={{ song_data[0].href }}"></iframe>
+                      <iframe src="https://embed.spotify.com/?uri={{ song.href }}"></iframe>
                     </div>
                   </div>
-                  <div class="left">
-                    <div class="card">
-                      <iframe src="https://embed.spotify.com/?uri={{ song_data[1].href }}"></iframe>
-                    </div>
-                  </div>
-                </div>
-                <div class="card_row">
-                  <div class="right">
-                    <div class="card">
-                      <iframe src="https://embed.spotify.com/?uri={{ song_data[2].href }}"></iframe>
-                    </div>
-                  </div>
-                  <div class="left">
-                    <div class="card">
-                      <iframe src="https://embed.spotify.com/?uri={{ song_data[3].href }}"></iframe>
-                    </div>
-                  </div>
-                </div>
-                <div class="card_row">
-                  <div class="right">
-                    <div class="card">
-                      <iframe src="https://embed.spotify.com/?uri={{ song_data[4].href }}"></iframe>
-                    </div>
-                  </div>
-                  <div class="left">
-                    <div class="card">
-                      <iframe src="https://embed.spotify.com/?uri={{ song_data[5].href }}"></iframe>
-                    </div>
-                  </div>
-                </div>
-                <div class="card_row">
-                  <div class="right">
-                    <div class="card">
-                      <iframe src="https://embed.spotify.com/?uri={{ song_data[6].href }}"></iframe>
-                    </div>
-                  </div>
-                  <div class="left">
-                    <div class="card">
-                      <iframe src="https://embed.spotify.com/?uri={{ song_data[7].href }}"></iframe>
-                    </div>
-                  </div>
-                </div>
-                <div class="card_row">
-                  <div class="right">
-                    <div class="card">
-                      <iframe src="https://embed.spotify.com/?uri={{ song_data[8].href }}"></iframe>
-                    </div>
-                  </div>
-                  <div class="left">
-                    <div class="card">
-                      <iframe src="https://embed.spotify.com/?uri={{ song_data[9].href }}"></iframe>
-                    </div>
-                  </div>
-                </div>
+              {% endfor %}
             {% endif %}
+          </div>
         </div>
     </div>
 {% endblock %}
